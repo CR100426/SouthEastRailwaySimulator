@@ -1,0 +1,196 @@
+{
+  "route_id": "BTL_Falmer_Lewes",
+  "name": "Falmer ↔ Lewes (East Coastway)",
+  "elr": "BTL",
+  "description": "First playable section of the East Coastway. Real-world approximate geometry from public ELR data, OS mapping and railway references. Distance ~4.38 miles (7.05 km).",
+  "version": "0.1.0",
+  "units": {
+    "distance": "metres",
+    "speed": "mph",
+    "gradient": "1_in_X"
+  },
+  "stations": [
+    {
+      "id": "FMR",
+      "name": "Falmer",
+      "milepost_from_brighton": 3.39,
+      "position_m": 0.0,
+      "platforms": [
+        {"id": "FMR_1", "side": "left", "direction": "down", "length_m": 240, "stopping_position_m": 20.0},
+        {"id": "FMR_2", "side": "right", "direction": "up", "length_m": 240, "stopping_position_m": 20.0}
+      ],
+      "elevation_m": 85.0,
+      "notes": "Two platforms. University of Sussex / Amex Stadium nearby. Level crossing approaches."
+    },
+    {
+      "id": "LWS",
+      "name": "Lewes",
+      "milepost_from_brighton": 7.77,
+      "position_m": 7050.0,
+      "platforms": [
+        {"id": "LWS_1", "side": "left", "direction": "eastbound", "length_m": 260, "stopping_position_m": 40.0},
+        {"id": "LWS_2", "side": "left", "direction": "bidirectional", "length_m": 260, "stopping_position_m": 40.0},
+        {"id": "LWS_3", "side": "right", "direction": "eastbound", "length_m": 240, "stopping_position_m": 30.0},
+        {"id": "LWS_4", "side": "right", "direction": "westbound", "length_m": 240, "stopping_position_m": 30.0},
+        {"id": "LWS_5", "side": "right", "direction": "westbound", "length_m": 200, "stopping_position_m": 25.0}
+      ],
+      "elevation_m": 12.0,
+      "notes": "Major junction station. Complex layout. Platforms 1-2 for London/Eastbourne, 3-5 for Brighton/Seaford services. Simplified for V0.1."
+    }
+  ],
+  "track_sections": [
+    {
+      "id": "FMR_LWS_MAIN",
+      "from_station": "FMR",
+      "to_station": "LWS",
+      "length_m": 7050.0,
+      "tracks": 2,
+      "electrification": "750V_DC_third_rail",
+      "max_speed_mph": 70,
+      "segments": [
+        {
+          "id": "seg_001",
+          "start_m": 0.0,
+          "end_m": 450.0,
+          "type": "straight",
+          "gradient_1_in": 0,
+          "speed_limit_mph": 50,
+          "notes": "Platform exit / station throat Falmer"
+        },
+        {
+          "id": "seg_002",
+          "start_m": 450.0,
+          "end_m": 900.0,
+          "type": "curve",
+          "radius_m": 800,
+          "curve_direction": "left",
+          "gradient_1_in": 200,
+          "speed_limit_mph": 60,
+          "notes": "Leaving Falmer, slight curve into cutting"
+        },
+        {
+          "id": "seg_003",
+          "start_m": 900.0,
+          "end_m": 1400.0,
+          "type": "tunnel",
+          "name": "Falmer Tunnel",
+          "length_m": 448,
+          "gradient_1_in": 0,
+          "speed_limit_mph": 70,
+          "notes": "Falmer Tunnel ~490 yards / 448 m. Level section."
+        },
+        {
+          "id": "seg_004",
+          "start_m": 1400.0,
+          "end_m": 3200.0,
+          "type": "descending",
+          "gradient_1_in": 88,
+          "speed_limit_mph": 70,
+          "notes": "Sustained 1 in 88 descent through South Downs. Key characteristic of the line."
+        },
+        {
+          "id": "seg_005",
+          "start_m": 3200.0,
+          "end_m": 4800.0,
+          "type": "curve_descending",
+          "radius_m": 600,
+          "curve_direction": "right",
+          "gradient_1_in": 90,
+          "speed_limit_mph": 65,
+          "notes": "Curving descent, open countryside, embankments and cuttings"
+        },
+        {
+          "id": "seg_006",
+          "start_m": 4800.0,
+          "end_m": 6200.0,
+          "type": "descending",
+          "gradient_1_in": 100,
+          "speed_limit_mph": 60,
+          "notes": "Approaching Lewes valley. Kingston area."
+        },
+        {
+          "id": "seg_007",
+          "start_m": 6200.0,
+          "end_m": 6500.0,
+          "type": "tunnel",
+          "name": "Kingston Tunnel",
+          "length_m": 98,
+          "gradient_1_in": 120,
+          "speed_limit_mph": 50,
+          "notes": "Kingston Tunnel ~107 yards"
+        },
+        {
+          "id": "seg_008",
+          "start_m": 6500.0,
+          "end_m": 7050.0,
+          "type": "approach",
+          "gradient_1_in": 200,
+          "speed_limit_mph": 30,
+          "notes": "Lewes station approach / junction throat. Speed restricted."
+        }
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "id": "sig_FMR_OUT_DN",
+      "position_m": 80.0,
+      "direction": "down",
+      "type": "4aspect",
+      "protects": "FMR_platform_exit"
+    },
+    {
+      "id": "sig_FMR_OUT_UP",
+      "position_m": 80.0,
+      "direction": "up",
+      "type": "4aspect",
+      "protects": "FMR_platform_exit"
+    },
+    {
+      "id": "sig_MID_1",
+      "position_m": 2200.0,
+      "direction": "down",
+      "type": "4aspect",
+      "protects": "block_section_1"
+    },
+    {
+      "id": "sig_MID_2",
+      "position_m": 4500.0,
+      "direction": "down",
+      "type": "4aspect",
+      "protects": "block_section_2"
+    },
+    {
+      "id": "sig_LWS_HOME",
+      "position_m": 6800.0,
+      "direction": "down",
+      "type": "4aspect",
+      "protects": "Lewes_approach"
+    },
+    {
+      "id": "sig_LWS_OUT_UP",
+      "position_m": 6970.0,
+      "direction": "up",
+      "type": "4aspect",
+      "protects": "LWS_platform_exit"
+    }
+  ],
+  "speed_restrictions": [
+    {"start_m": 0.0, "end_m": 200.0, "limit_mph": 25, "reason": "Station limit Falmer"},
+    {"start_m": 200.0, "end_m": 900.0, "limit_mph": 50, "reason": "Leaving station"},
+    {"start_m": 900.0, "end_m": 6200.0, "limit_mph": 70, "reason": "Line speed"},
+    {"start_m": 6200.0, "end_m": 6800.0, "limit_mph": 50, "reason": "Approach restriction"},
+    {"start_m": 6800.0, "end_m": 7050.0, "limit_mph": 25, "reason": "Station limit Lewes"}
+  ],
+  "scenery_notes": {
+    "terrain": "South Downs chalk hills. Significant elevation drop from Falmer (~85m) to Lewes (~12m). Open fields, hedgerows, cuttings and embankments. A27 corridor visible in places.",
+    "landmarks": [
+      "University of Sussex buildings near Falmer",
+      "Amex Stadium (visible from train)",
+      "Falmer Tunnel portals",
+      "South Downs rolling hills",
+      "Lewes Castle and town on approach",
+      "River Ouse valley near Lewes"
+    ]
+  }
+}
